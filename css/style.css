@@ -107,3 +107,83 @@ nav {
 .hero-content button:hover {
     background-color: #0052a3;
 }
+
+#ride-search {
+    width: 82%;
+    margin: 80px auto;
+    padding: 35px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#ride-search h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#ride-search form {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px 15px;
+    font-size: 15px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: royalblue;
+    background: #fff;
+}
+
+.vehicle-selection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#max-passengers {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+}
+
+form button {
+    grid-column: span 2;
+    width: 220px;
+    margin: 10px auto 0;
+    padding: 14px;
+    background: royalblue;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+form button:hover {
+    background: #0055cc;
+}
