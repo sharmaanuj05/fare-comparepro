@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FareCompare Pro | Smart Ride Decision Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <h2>FareCompare Pro</h2>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#ride-search">Compare</a></li>
+            <li><a href="#ride-results">Rides</a></li>
+            <li><a href="#ride-history">History</a></li>
+        </ul>
+
+        <button id="theme-toggle">🌙</button>
+    </nav>
+</header>
+
+<main>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Smart Ride Decision Assistant</h1>
+
+            <p>
+                Compare cab fares, discover the smartest ride,
+                estimate your savings and make better travel
+                decisions in seconds.
+            </p>
+
+            <button>Compare Now</button>
+        </div>
+    </section>
+
+    <section id="ride-search">
+
+        <h2>Find the Best Ride</h2>
+
+        <form>
+
+    <div class="form-group">
+        <label for="pickup">Pickup Location</label>
+        <input
+            type="text"
+            id="pickup"
+            placeholder="Enter pickup location"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="drop">Drop Location</label>
+        <input
+            type="text"
+            id="drop"
+            placeholder="Enter destination"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="departure-time">Departure Time</label>
+        <input
+            type="time"
+            id="departure-time"
+        >
+    </div>
+
+    <div class="form-group vehicle-group">
+        <label for="vehicle-type">Vehicle Type</label>
+
+        <div class="vehicle-selection">
+
+            <select id="vehicle-type">
+
+                <option value="sedan" selected>🚗 Sedan</option>
+                <option value="compact-suv">🚙 Compact SUV</option>
+                <option value="suv">🚘 SUV</option>
+                <option value="auto">🛺 Auto</option>
+                <option value="bike">🏍️ Bike</option>
+
+            </select>
+
+            <span id="max-passengers">
+                👥 Max Passengers: 
+            </span>
+
+        </div>
+    </div>
+
+    <button type="submit">
+        Compare Rides
+    </button>
+
+</form>
+
+    </section>
+
+    <section id="recommendation">
+
+        <h2>Smart Recommendation</h2>
+
+        <div class="recommendation-card">
+            <h3>No Recommendation Yet</h3>
+
+            <p>
+                Enter your trip details to receive the smartest
+                ride recommendation.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="ride-results">
+
+        <h2>Available Rides</h2>
+
+        <div class="ride-container">
+
+            <article class="ride-card">
+                <h3>Uber</h3>
+                <p>Fare : --</p>
+                <p>ETA : --</p>
+                <p>Rating : --</p>
+            </article>
+
+            <article class="ride-card">
+                <h3>Ola</h3>
+                <p>Fare : --</p>
+                <p>ETA : --</p>
+                <p>Rating : --</p>
+            </article>
+
+            <article class="ride-card">
+                <h3>Rapido</h3>
+                <p>Fare : --</p>
+                <p>ETA : --</p>
+                <p>Rating : --</p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section id="ride-insights">
+
+        <h2>Ride Insights</h2>
+
+        <div class="insight-container">
+
+            <div class="insight-card">
+                <h3>Savings</h3>
+                <p>₹0</p>
+            </div>
+
+            <div class="insight-card">
+                <h3>Eco Score</h3>
+                <p>--</p>
+            </div>
+
+            <div class="insight-card">
+                <h3>Best Time</h3>
+                <p>--</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="ride-history">
+
+        <h2>Recent Searches</h2>
+
+        <div class="history-container">
+            <p>No recent searches found.</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer id="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>FareCompare Pro</h3>
+
+            <p>
+                Compare cab fares across multiple ride services,
+                find the best option and travel smarter every day.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#ride-search">Compare</a></li>
+                <li><a href="#ride-results">Available Rides</a></li>
+                <li><a href="#ride-history">Recent Searches</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+
+            <p>Phone: +91 85952 54105</p>
+            <p>Email: anuj.sharma4105@gmail.com</p>
+            <p>Location: Ghaziabad, Uttar Pradesh</p>
+        </div>
+
+        <div class="footer-project">
+            <h4>Project Details</h4>
+            <p>Built with HTML, CSS and JavaScript</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 FareCompare Pro. All Rights Reserved.</p>
+    </div>
+
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/fare.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
