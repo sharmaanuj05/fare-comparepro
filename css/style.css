@@ -109,81 +109,72 @@ nav {
 }
 
 #ride-search {
-    width: 82%;
-    margin: 80px auto;
-    padding: 35px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    top: -30px;
+    width: 80%;
+    margin: 0 auto 70px;
+    padding: 35px 40px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 #ride-search h2 {
+    font-size: 30px;
     text-align: center;
-    font-size: 32px;
-    margin-bottom: 10px;
     color: #222;
+    margin-bottom: 30px;
 }
 
 #ride-search form {
-    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #444;
+    gap: 25px;
 }
 
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 13px 15px;
-    font-size: 15px;
-    border: 1px solid #d5d5d5;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #d9d9d9;
     border-radius: 8px;
-    background-color: #fafafa;
+    background: #fcfcfc;
+    transition: border-color 0.2s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: royalblue;
-    background: #fff;
+    border-color: #0d6efd;
 }
 
 .vehicle-selection {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
 }
 
 #max-passengers {
-    font-size: 14px;
-    font-weight: 500;
-    color: #666;
+    background: #eef4ff;
+    color: #0d6efd;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 form button {
     grid-column: span 2;
-    width: 220px;
+    width: 240px;
+    height: 48px;
     margin: 10px auto 0;
-    padding: 14px;
-    background: royalblue;
-    color: white;
+    border-radius: 8px;
+    background: #0d6efd;
+    color: #fff;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 8px;
 }
 
 form button:hover {
-    background: #0055cc;
+    background: #0b5ed7;
 }
