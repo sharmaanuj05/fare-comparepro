@@ -208,3 +208,61 @@ form button:hover {
     color: #555;
     line-height: 1.6;
 }
+#ride-results {
+    width: 85%;
+    margin: 80px auto;
+}
+
+#ride-results h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #2d2d2d;
+    margin-bottom: 35px;
+}
+
+.ride-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ride-card {
+    width: 280px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    border: 1px solid #ddd;
+    transition: 0.2s ease;
+}
+
+.ride-card:hover {
+    border-color: #0d6efd;
+    margin-top: -5px;
+}
+
+.ride-card h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+    color: #0d6efd;
+}
+
+.ride-card p {
+    font-size: 15px;
+    color: #555;
+    margin: 12px 0;
+}
+
+.ride-card button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 11px;
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.ride-card button:hover {
+    background-color: #0b5ed7;
+}
