@@ -382,3 +382,119 @@ form button:hover {
     color: #cbd5e1;
     font-size: 14px;
 }
+@media only screen and (max-width: 900px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    #hero,
+    #ride-search,
+    #recommendation,
+    #ride-results,
+    #ride-insights,
+    #ride-history {
+        width: 90%;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    #ride-search form {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+    }
+
+    .ride-container,
+    .insight-container {
+        gap: 18px;
+        justify-content: center;
+    }
+
+    .ride-card,
+    .insight-card {
+        width: 340px;
+    }
+
+    .footer-content {
+        gap: 30px;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        padding: 18px 0;
+    }
+
+    .nav-links {
+        margin-top: 18px;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #theme-toggle {
+        margin-top: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .vehicle-selection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .logo h2 {
+        font-size: 22px;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero-content button,
+    form button {
+        width: 100%;
+    }
+
+    .ride-card,
+    .insight-card {
+        width: 100%;
+    }
+
+    #ride-search,
+    #recommendation,
+    #ride-results,
+    #ride-insights,
+    #ride-history {
+        padding: 20px;
+    }
+
+}
