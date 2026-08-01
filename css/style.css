@@ -327,3 +327,58 @@ form button:hover {
     color: #666;
     font-size: 16px;
 }
+#footer {
+    background-color: #1f2937;
+    color: white;
+    margin-top: 80px;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-brand,
+.footer-links,
+.footer-contact,
+.footer-project {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-content h3,
+.footer-content h4 {
+    margin-bottom: 15px;
+}
+
+.footer-content p,
+.footer-content li {
+    color: #d1d5db;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links a:hover {
+    color: #60a5fa;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #374151;
+}
+
+.footer-bottom p {
+    color: #cbd5e1;
+    font-size: 14px;
+}
