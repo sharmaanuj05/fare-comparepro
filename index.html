@@ -96,9 +96,9 @@
         </div>
     </div>
 
-    <button type="submit">
-        Compare Rides
-    </button>
+            <button type="button" id="compare-btn">
+            Compare Rides
+            </button>
 
 </form>
 
@@ -109,12 +109,11 @@
         <h2>Smart Recommendation</h2>
 
         <div class="recommendation-card">
-            <h3>No Recommendation Yet</h3>
+            <h3 id="ride-title"> No Recommendation Yet   </h3>
 
-            <p>
-                Enter your trip details to receive the smartest
-                ride recommendation.
-            </p>
+        <p id="ride-message">
+            Compare rides to get the best travel option.
+        </p>
         </div>
 
     </section>
@@ -127,25 +126,25 @@
 
             <article class="ride-card">
                 <h3>Uber</h3>
-                <p>Fare : --</p>
-                <p>ETA : --</p>
-                <p>Rating : --</p>
+                    <p>Fare : <span id="uber-fare">--</span></p>
+                    <p>ETA : <span id="uber-time">--</span></p>
+                    <p>Rating : <span id="uber-rating">--</span></p>
                 <button>View Details</button>
             </article>
 
             <article class="ride-card">
                 <h3>Ola</h3>
-                <p>Fare : --</p>
-                <p>ETA : --</p>
-                <p>Rating : --</p>
+                <p>Fare : <span id="rapido-fare">--</span></p>
+                <p>ETA : <span id="rapido-time">--</span></p>
+                <p>Rating : <span id="rapido-rating">--</span></p>
                 <button>View Details</button>
             </article>
 
             <article class="ride-card">
                 <h3>Rapido</h3>
-                <p>Fare : --</p>
-                <p>ETA : --</p>
-                <p>Rating : --</p>
+                <p>Fare : <span id="rapido-fare">--</span></p>
+                <p>ETA : <span id="rapido-time">--</span></p>
+                <p>Rating : <span id="rapido-rating">--</span></p>
                 <button>View Details</button>
             </article>
 
@@ -161,17 +160,17 @@
 
             <div class="insight-card">
                 <h3>💰 Savings</h3>
-                <p>₹0</p>
+                <p id="saved-money">₹0</p>
             </div>
 
             <div class="insight-card">
                 <h3>🌱 Eco Score</h3>
-                <p>--</p>
+                <p id="eco-score">--</p>
             </div>
 
             <div class="insight-card">
                 <h3>⏰ Best Time</h3>
-                <p>--</p>
+                <p id="best-time">--</p>
             </div>
 
         </div>
