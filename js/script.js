@@ -64,7 +64,49 @@ compareBtn.onclick = function () {
 
     document.getElementById("eco-score").textContent = "A";
 
-    document.getElementById("best-time").textContent =
-        bestCab.eta + " min";
+    document.getElementById("best-time").textContent = bestCab.eta + " min";
+    addTrip(bestCab.service + " • ₹" + bestCab.amount);
 
 };
+let recentTrips = JSON.parse(localStorage.getItem("recentTrips")) || [];
+
+function updateTrips() {
+
+    let tripBox = document.getElementById("search-list");
+
+    tripBox.innerHTML = "";
+
+    if (recentTrips.length == 0) {
+
+        tripBox.innerHTML = "<li>No recent searches.</li>";
+        return;
+
+    }
+
+    for (let trip of recentTrips) {
+
+        let row = document.createElement("li");
+
+        row.innerText = trip;
+
+        tripBox.appendChild(row);
+
+    }
+
+}
+
+function addTrip(value) {
+
+    recentTrips.unshift(value);
+
+    if (recentTrips.length > 5) {
+        recentTrips.length = 5;
+    }
+
+    localStorage.setItem("recentTrips", JSON.stringify(recentTrips));
+
+    updateTrips();
+
+}
+
+updateTrips();
