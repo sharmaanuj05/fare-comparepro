@@ -541,3 +541,49 @@ body.night #theme-toggle {
     background-color: #333;
     color: #fff;
 }
+.ride-card,
+.insight-card,
+.recommendation-card,
+.history-container,
+button,
+input,
+select {
+    transition: .25s ease;
+}
+
+.ride-card:hover {
+    transform: translateY(-8px);
+    border-color: #2563eb;
+}
+
+.recommendation-card {
+    border-left: 4px solid #2563eb;
+}
+
+.history-container li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ececec;
+}
+
+.history-container li:last-child {
+    border-bottom: none;
+}
+
+.footer-links a {
+    transition: color .2s ease;
+}
+
+.footer-links a:hover {
+    color: #3b82f6;
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,.15);
+}
