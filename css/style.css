@@ -498,3 +498,46 @@ form button:hover {
     }
 
 }
+body.night {
+    background-color: #141414;
+    color: #ececec;
+}
+
+body.night header,
+body.night #ride-search,
+body.night .recommendation-card,
+body.night .ride-card,
+body.night .insight-card,
+body.night .history-container,
+body.night footer {
+    background-color: #202020;
+    color: #ececec;
+    border-color: #383838;
+}
+
+body.night h1,
+body.night h2,
+body.night h3,
+body.night h4,
+body.night label {
+    color: #ffffff;
+}
+
+body.night p,
+body.night span,
+body.night li,
+body.night a {
+    color: #d5d5d5;
+}
+
+body.night input,
+body.night select {
+    background-color: #2d2d2d;
+    color: #fff;
+    border: 1px solid #4b4b4b;
+}
+
+body.night #theme-toggle {
+    background-color: #333;
+    color: #fff;
+}

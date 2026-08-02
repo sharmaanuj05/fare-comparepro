@@ -110,3 +110,33 @@ function addTrip(value) {
 }
 
 updateTrips();
+const modeBtn = document.getElementById("theme-toggle");
+
+let savedMode = localStorage.getItem("pageMode");
+
+if (savedMode == "night") {
+
+    document.body.classList.add("night");
+    modeBtn.textContent = "☀️";
+
+}
+
+modeBtn.onclick = function () {
+
+    document.body.classList.toggle("night");
+
+    let darkOn = document.body.classList.contains("night");
+
+    if (darkOn) {
+
+        localStorage.setItem("pageMode", "night");
+        modeBtn.textContent = "☀️";
+
+    } else {
+
+        localStorage.setItem("pageMode", "day");
+        modeBtn.textContent = "🌙";
+
+    }
+
+};
