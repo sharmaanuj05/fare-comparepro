@@ -15,19 +15,6 @@ rideType.onchange = function () {
 };
 
 compareBtn.onclick = function () {
-
-    let km = prompt("Enter distance in KM");
-
-    if (km == "" || km == null || isNaN(km)) {
-        alert("Enter a valid distance.");
-        return;
-    }
-
-    km = Number(km);
-
-    let allCab = compareRide(km);
-    let bestCab = chooseRide(km);
-
     for (let i = 0; i < allCab.length; i++) {
 
         let company = allCab[i].service.toLowerCase();
@@ -48,6 +35,14 @@ compareBtn.onclick = function () {
 
     document.getElementById("ride-message").textContent =
         "Estimated Fare : ₹" + bestCab.amount;
+        let tripNote = "Fast arrival";
+
+        if (bestCab.eta > 6) 
+            {
+            tripNote = "Saves more money";
+            }
+
+        document.getElementById("trip-status").textContent = tripNote;
 
     let highest = allCab[0].amount;
 
