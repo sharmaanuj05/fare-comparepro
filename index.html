@@ -45,67 +45,75 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
         before booking your ride.
     </p>
 </section>
-
-    <section id="ride-search">
-
-        <h2>Find the Best Ride</h2>
-
-        <form>
-
-    <div class="form-group">
-        <label for="pickup">Pickup Location</label>
-        <input
-            type="text"
-            id="pickup"
-            placeholder="Enter pickup location"
-        >
-    </div>
-
-    <div class="form-group">
-        <label for="drop">Drop Location</label>
-        <input
-            type="text"
-            id="drop"
-            placeholder="Enter destination"
-        >
-    </div>
-
-    <div class="form-group">
-        <label for="departure-time">Departure Time</label>
-        <input
-            type="time"
-            id="departure-time"
-        >
-    </div>
-
-    <div class="form-group vehicle-group">
-        <label for="vehicle-type">Vehicle Type</label>
-
-        <div class="vehicle-selection">
-
-            <select id="vehicle-type">
-
-                <option value="Bike">Bike</option>
-                <option value="Auto">Auto</option>
-                <option value="Sedan">Sedan</option>
-                <option value="Compact SUV">Compact SUV</option>
-                <option value="SUV">SUV</option>
-            </select>
-
-            <span id="max-passengers">
-                👥 Max Passengers: 
-            </span>
-
-        </div>
-    </div>
-
+<section id="ride-search">
+    <h2>Compare Your Ride</h2>
+    <div class="compare-layout">
+        <form id="ride-form">
+            <div class="form-group">
+                <label for="pickup">Pickup</label>
+                <input
+                    type="text"
+                    id="pickup"
+                    placeholder="Enter pickup location"
+                >
+            </div>
+            <div class="form-group">
+                <label for="drop">Destination</label>
+                <input
+                    type="text"
+                    id="drop"
+                    placeholder="Enter destination"
+                >
+            </div>
+            <div class="form-group">
+                <label for="departure-time">Departure</label>
+                <input
+                    type="time"
+                    id="departure-time"
+                >
+            </div>
+            <div class="form-group vehicle-group">
+                <label for="vehicle-type">Ride Type</label>
+                <div class="vehicle-selection">
+                    <select id="vehicle-type">
+                        <option value="Bike">Bike</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Compact SUV">Compact SUV</option>
+                        <option value="SUV">SUV</option>
+                    </select>
+                    <span id="max-passengers">
+                        👥 Max Passengers:
+                    </span>
+                </div>
+            </div>
             <button type="button" id="compare-btn">
-            Compare Rides
+                Find Best Ride
             </button>
-
-</form>
-
-    </section>
+        </form>
+        <aside class="result-panel">
+            <span class="result-label">
+                Recommended Ride
+            </span>
+            <h3 id="result-title">
+                No Ride Selected
+            </h3>
+            <p id="result-description">
+                Enter your trip details and compare rides to see the best option.
+            </p>
+            <div class="result-meta">
+                <div>
+                    <small>Estimated Saving</small>
+                    <strong id="saving-value">₹0</strong>
+                </div>
+                <div>
+                    <small>ETA</small>
+                    <strong id="eta-value">--</strong>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
 
     <section id="recommendation">
 
