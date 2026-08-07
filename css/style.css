@@ -20,9 +20,9 @@ color:var(--text);
 line-height:1.6;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 ul {
@@ -88,7 +88,7 @@ color:var(--accent);
     background: whitesmoke;
 }
 
-#hero{
+#page-header{
 width:min(1180px,92%);
 margin:70px auto;
 padding:90px 40px;
@@ -100,12 +100,12 @@ box-shadow:
 0 20px 60px rgba(20,20,20,.05);
 }
 
-.hero-content {
+.page-header-content {
     max-width: 700px;
     margin: auto;
 }
 
-.hero-content h1{
+.page-header-content h1{
 font-size:64px;
 font-weight:800;
 line-height:1.05;
@@ -113,7 +113,7 @@ letter-spacing:-2px;
 margin-bottom:22px;
 }
 
-.hero-content p{
+.page-header-content p{
 font-size:18px;
 max-width:650px;
 margin:auto;
@@ -121,7 +121,7 @@ color:var(--muted);
 margin-bottom:42px;
 }
 
-.hero-content button{
+.page-header-content button{
 padding:18px 42px;
 font-size:17px;
 font-weight:700;
@@ -130,7 +130,7 @@ background:var(--accent);
 color:white;
 transition:.35s;
 }
-.hero-content button:hover{
+.page-header-content button:hover{
 background:var(--accent-hover);
 transform:translateY(-4px);
 box-shadow:0 16px 35px rgba(196,107,45,.25);
@@ -416,7 +416,7 @@ form button:hover {
         padding: 0 20px;
     }
 
-    #hero,
+    #page-header,
     #ride-search,
     #recommendation,
     #ride-results,
@@ -425,11 +425,11 @@ form button:hover {
         width: 90%;
     }
 
-    .hero-content h1 {
+    .page-header-content h1 {
         font-size: 34px;
     }
 
-    .hero-content p {
+    .page-header-content p {
         width: 100%;
         font-size: 16px;
     }
@@ -478,11 +478,11 @@ form button:hover {
         margin-top: 12px;
     }
 
-    .hero-content h1 {
+    .page-header-content h1 {
         font-size: 28px;
     }
 
-    .hero-content p {
+    .page-header-content p {
         font-size: 15px;
     }
 
@@ -503,11 +503,11 @@ form button:hover {
         font-size: 22px;
     }
 
-    .hero-content h1 {
+    .page-header-content h1 {
         font-size: 24px;
     }
 
-    .hero-content button,
+    .page-header-content button,
     form button {
         width: 100%;
     }
