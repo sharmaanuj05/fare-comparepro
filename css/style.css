@@ -259,51 +259,58 @@ form button:hover{
     margin-bottom: 35px;
 }
 
-.ride-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+.ride-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+    margin-top:35px;
 }
 
-.ride-card {
-    width: 280px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 22px;
-    border: 1px solid #ddd;
-    transition: 0.2s ease;
+.ride-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px;
+    transition:.25s;
 }
 
-.ride-card:hover {
-    border-color: #0d6efd;
-    margin-top: -5px;
+.ride-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--accent);
+    box-shadow:0 16px 32px rgba(0,0,0,.08);
 }
 
-.ride-card h3 {
-    font-size: 24px;
-    margin-bottom: 18px;
-    color: #0d6efd;
+.ride-card h3{
+    font-size:24px;
+    color:var(--text);
+    margin-bottom:18px;
 }
 
-.ride-card p {
-    font-size: 15px;
-    color: #555;
-    margin: 12px 0;
+.ride-card p{
+    display:flex;
+    justify-content:space-between;
+    margin:12px 0;
+    color:var(--muted);
+    font-size:15px;
 }
 
-.ride-card button {
-    width: 100%;
-    margin-top: 18px;
-    padding: 11px;
-    background-color: #0d6efd;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 15px;
+.ride-card span{
+    color:var(--text);
+    font-weight:600;
 }
 
-.ride-card button:hover {
-    background-color: #0b5ed7;
+.ride-card button{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    border-radius:10px;
+    background:var(--accent);
+    color:white;
+    transition:.25s;
+}
+
+.ride-card button:hover{
+    background:var(--accent-hover);
 }
 #ride-insights,
 #ride-history {
