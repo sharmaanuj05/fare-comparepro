@@ -125,6 +125,17 @@ function addTrip(value) {
 }
 
 updateTrips();
+const clearBtn = document.getElementById("clear-history");
+
+clearBtn.onclick = function () {
+
+    recentTrips = [];
+
+    localStorage.removeItem("recentTrips");
+
+    updateTrips();
+
+};
 const modeBtn = document.getElementById("theme-toggle");
 
 let savedMode = localStorage.getItem("pageMode");
@@ -155,3 +166,12 @@ modeBtn.onclick = function () {
     }
 
 };
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Enter") {
+
+        compareBtn.click();
+
+    }
+
+});

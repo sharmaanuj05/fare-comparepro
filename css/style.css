@@ -556,7 +556,27 @@ button:active {
     margin-bottom:28px;
     color:var(--text);
 }
+#clear-history{
+    display:block;
+    margin:0 auto 25px;
+    padding:10px 20px;
+    background:var(--accent);
+    color:white;
+    border-radius:10px;
+    transition:.25s;
+}
+#compare-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
 
+#clear-history:active,
+#compare-btn:active{
+    transform:scale(.98);
+}
+#clear-history:hover{
+    background:var(--accent-hover);
+}
 .compare-layout{
     display:grid;
     grid-template-columns:420px 1fr;
