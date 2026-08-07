@@ -14,7 +14,16 @@ rideType.onchange = function () {
     seatText.textContent = "👥 Max Passengers : " + seatCount[this.value];
 };
 compareBtn.onclick = function () {
+    let pickup = document.getElementById("pickup").value.trim();
+    let drop = document.getElementById("drop").value.trim();
 
+    if (pickup === "" || drop === "") 
+    {
+    alert("Please enter both pickup and destination.");
+    return;
+    }
+    compareBtn.textContent = "Comparing...";
+    compareBtn.disabled = true;
     let km = 10;
 
     let allCab = compareRide(km);
@@ -71,6 +80,8 @@ document.getElementById("saving-value").textContent =
         bestCab.eta + " min";
 
     addTrip(bestCab.service + " • ₹" + bestCab.amount);
+    compareBtn.textContent = "Find Best Ride";
+    compareBtn.disabled = false;
 
 };
 let recentTrips = JSON.parse(localStorage.getItem("recentTrips")) || [];
