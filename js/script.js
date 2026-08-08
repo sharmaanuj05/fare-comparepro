@@ -78,11 +78,32 @@ document.getElementById("saving-value").textContent =
 
     document.getElementById("best-time").textContent =
         bestCab.eta + " min";
+        let resultValues = document.querySelectorAll(
+
+    "#saving-value, #eta-value, #saved-money, #eco-score, #best-time"
+
+);
+
+for (let value of resultValues) {
+
+    value.classList.remove("updated");
+
+    setTimeout(function () {
+
+        value.classList.add("updated");
+
+    }, 50);
+
+}
 
     addTrip(bestCab.service + " • ₹" + bestCab.amount);
     compareBtn.textContent = "Find Best Ride";
     compareBtn.disabled = false;
-
+    document.querySelector(".result-panel").classList.remove("show");
+    setTimeout(function () 
+    {
+    document.querySelector(".result-panel").classList.add("show");
+    }, 50);
 };
 let recentTrips = JSON.parse(localStorage.getItem("recentTrips")) || [];
 function updateTrips() {

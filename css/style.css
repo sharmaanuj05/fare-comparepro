@@ -948,3 +948,64 @@ body.night #ride-search h2 {
         scroll-behavior: auto !important;
     }
 }
+.result-panel.show {
+    animation: resultShow 0.4s ease-out;
+}
+
+@keyframes resultShow {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recommendation-card.show {
+    animation: recommendationShow 0.4s ease-out;
+}
+
+@keyframes recommendationShow {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-meta strong,
+.insight-card p {
+    transition: transform 0.25s ease;
+}
+
+.result-meta strong.updated,
+.insight-card p.updated {
+    transform: scale(1.06);
+}
+
+.ride-card button {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.ride-card button:hover {
+    transform: translateY(-2px);
+}
+
+#clear-history {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+#clear-history:hover {
+    transform: translateY(-2px);
+}
