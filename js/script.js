@@ -175,3 +175,29 @@ document.addEventListener("keydown", function (event) {
     }
 
 });
+const animatedSections = document.querySelectorAll(
+    "#ride-search, #ride-results, #ride-insights, #ride-history, #footer"
+);
+
+const revealObserver = new IntersectionObserver(
+    function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    },
+    {
+        threshold: 0.12
+    }
+);
+
+animatedSections.forEach(function (section) {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(30px)";
+    section.style.transition = "opacity .7s ease, transform .7s ease";
+
+    revealObserver.observe(section);
+});

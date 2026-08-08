@@ -703,3 +703,248 @@ button:active {
     color:chocolate;
     font-weight:600;
 }
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    animation: pageEnter 0.7s ease-out;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#page-header {
+    animation: heroEnter 0.9s ease-out both;
+}
+
+@keyframes heroEnter {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.page-header-content h1 {
+    animation: textReveal 0.8s ease-out 0.15s both;
+}
+
+.page-header-content p {
+    animation: textReveal 0.8s ease-out 0.3s both;
+}
+
+.page-header-content button {
+    animation: textReveal 0.8s ease-out 0.45s both;
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+button:hover::after {
+    left: 140%;
+}
+
+.ride-card,
+.insight-card,
+.history-container,
+.result-panel,
+#ride-form {
+    animation: cardEnter 0.7s ease-out both;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ride-card:hover,
+.insight-card:hover {
+    transform: translateY(-10px) scale(1.015);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(196, 107, 45, 0.15);
+}
+
+.result-panel {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.result-panel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input,
+.form-group select {
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    transform: translateY(-2px);
+}
+
+.insight-card p {
+    transition: transform 0.3s ease;
+}
+
+.insight-card:hover p {
+    transform: scale(1.08);
+}
+
+#ride-results h2,
+#ride-insights h2,
+#ride-history h2,
+#ride-search h2 {
+    transition: transform 0.3s ease;
+}
+
+#ride-results h2:hover,
+#ride-insights h2:hover,
+#ride-history h2:hover,
+#ride-search h2:hover {
+    transform: translateY(-2px);
+}
+
+#search-list li {
+    transition:
+        padding-left 0.25s ease,
+        color 0.25s ease;
+}
+
+#search-list li:hover {
+    padding-left: 8px;
+    color: var(--accent);
+}
+
+#theme-toggle {
+    transition:
+        transform 0.35s ease,
+        background 0.25s ease;
+}
+
+#theme-toggle:hover {
+    transform: rotate(18deg) scale(1.08);
+}
+
+.footer-links a {
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    transform: translateX(5px);
+}
+
+#compare-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+#compare-btn.loading::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 9px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    vertical-align: -2px;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.night #page-header {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(196, 107, 45, 0.2),
+            transparent 45%
+        ),
+        #202020;
+}
+
+body.night .page-header-content h1,
+body.night .page-header-content p {
+    color: #ffffff;
+}
+
+body.night #ride-results h2,
+body.night #ride-insights h2,
+body.night #ride-history h2,
+body.night #ride-search h2 {
+    color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
