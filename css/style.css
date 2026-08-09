@@ -155,45 +155,87 @@ box-shadow:0 16px 35px rgba(196,107,45,.25);
     margin-top:35px;
 }
 
-.ride-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:26px;
-    transition:.25s;
+.ride-card {
+    position: relative;
+    min-height: 290px;
+    background: transparent;
+    border: none;
+    perspective: 1000px;
 }
 
-.ride-card h3{
-    font-size:24px;
-    color:var(--text);
-    margin-bottom:18px;
+.ride-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 290px;
+    transform-style: preserve-3d;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1);
 }
 
-.ride-card p{
-    display:flex;
-    justify-content:space-between;
-    margin:12px 0;
-    color:var(--muted);
-    font-size:15px;
+.ride-card:hover .ride-card-inner {
+    transform: rotateY(180deg);
 }
 
-.ride-card span{
-    color:var(--text);
-    font-weight:600;
+.ride-card-front,
+.ride-card-back {
+    position: absolute;
+    inset: 0;
+    padding: 26px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,.06);
 }
 
-.ride-card button{
-    width:100%;
-    margin-top:18px;
-    padding:12px;
-    border-radius:10px;
-    background:var(--accent);
-    color:white;
-    transition:.25s;
+.ride-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.ride-card button:hover{
-    background:var(--accent-hover);
+.ride-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:
+        radial-gradient(circle at top right, #FFEBD7, transparent 55%),
+        var(--surface);
+}
+
+.ride-card h3 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.ride-card p {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    color: var(--muted);
+}
+
+.ride-card span {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.ride-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border-radius: 11px;
+    background: var(--accent);
+    color: white;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.ride-card button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
 }
 #ride-insights,
 #ride-history {
@@ -365,7 +407,13 @@ box-shadow:0 16px 35px rgba(196,107,45,.25);
     form button {
         width: 100%;
     }
+    .ride-card:hover .ride-card-inner {
+    transform: none;
+}
 
+    .ride-card-back {
+    display: none;
+}
 }
 
 @media only screen and (max-width: 700px) {
@@ -817,6 +865,7 @@ button:hover::after {
 }
 
 .result-panel {
+    transform-style: preserve-3d;
     transition:
         transform 0.35s ease,
         box-shadow 0.35s ease,
@@ -824,8 +873,17 @@ button:hover::after {
 }
 
 .result-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.result-meta div {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.result-meta div:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
 .form-group input,
@@ -1008,4 +1066,23 @@ body.night #ride-search h2 {
 
 #clear-history:hover {
     transform: translateY(-2px);
+}
+.result-meta strong.updated {
+    animation: valuePop .35s ease;
+}
+
+@keyframes valuePop {
+    0% {
+        opacity: .3;
+        transform: translateY(6px) scale(.96);
+    }
+
+    70% {
+        transform: translateY(-2px) scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
