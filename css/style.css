@@ -751,6 +751,43 @@ button:active {
     color:chocolate;
     font-weight:600;
 }
+    button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+input,
+select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(196, 107, 45, 0.12);
+}
+
+#page-header {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#page-header:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 55px rgba(20, 20, 20, 0.08);
+}
+
+#search-list li {
+    transition: padding-left 0.2s ease;
+}
+
+#search-list li:hover {
+    padding-left: 6px;
+}
 html {
     scroll-behavior: smooth;
 }
