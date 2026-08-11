@@ -222,3 +222,15 @@ animatedSections.forEach(function (section) {
 
     revealObserver.observe(section);
 });
+let rideCards = document.querySelectorAll(".ride-card");
+
+for (let card of rideCards) {
+    card.onclick = function () {
+
+        for (let item of rideCards) {
+            item.classList.remove("selected");
+        }
+
+        card.classList.add("selected");
+    };
+}
