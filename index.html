@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FareCompare Pro | Smart Ride Decision Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?
-family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,54 +25,44 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
             <li><a href="#ride-history">History</a></li>
         </ul>
 
-        <button id="theme-toggle">🌙</button>
+        <button id="theme-toggle" type="button">🌙</button>
     </nav>
 </header>
 
 <main>
-    <section id="page-header">
-            <div class="page-header-content">
-    <span class="page-badge">
-        Compare Uber, Ola & Rapido
-    </span>
-    <h1>
-        Compare Ride Prices
-    </h1>
-    <p>
-        Find the best ride based on fare, travel time and ratings —
-        all in one place.
-    </p>
+
+<section id="page-header">
+    <div class="page-header-content">
+        <span class="page-badge">Compare Uber, Ola & Rapido</span>
+        <h1>Compare Ride Prices</h1>
+        <p>Find the best ride based on fare, travel time and ratings — all in one place.</p>
     </div>
 </section>
+
 <section id="ride-search">
     <h2>Compare Your Ride</h2>
+
     <div class="compare-layout">
+
         <form id="ride-form">
             <div class="form-group">
                 <label for="pickup">Pickup</label>
-                <input
-                    type="text"
-                    id="pickup"
-                    placeholder="Enter pickup location"
-                >
+                <input type="text" id="pickup" placeholder="Enter pickup location">
             </div>
+
             <div class="form-group">
                 <label for="drop">Destination</label>
-                <input
-                    type="text"
-                    id="drop"
-                    placeholder="Enter destination"
-                >
+                <input type="text" id="drop" placeholder="Enter destination">
             </div>
+
             <div class="form-group">
                 <label for="departure-time">Departure</label>
-                <input
-                    type="time"
-                    id="departure-time"
-                >
+                <input type="time" id="departure-time">
             </div>
+
             <div class="form-group vehicle-group">
                 <label for="vehicle-type">Ride Type</label>
+
                 <div class="vehicle-selection">
                     <select id="vehicle-type">
                         <option value="Bike">Bike</option>
@@ -82,153 +71,215 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
                         <option value="Compact SUV">Compact SUV</option>
                         <option value="SUV">SUV</option>
                     </select>
-                    <span id="max-passengers">
-                        👥 Max Passengers:
-                    </span>
+
+                    <span id="max-passengers">👥 Max Passengers : 1</span>
                 </div>
             </div>
-            <button type="button" id="compare-btn">
-                Find Best Ride
-            </button>
+
+            <button type="button" id="compare-btn">Find Best Ride</button>
         </form>
+
         <aside class="result-panel">
+            <span class="result-label">Recommended Ride</span>
 
-    <span class="result-label">
-        Recommended Ride
-    </span>
+            <h3 id="ride-title">No Ride Selected</h3>
 
-    <h3 id="ride-title">
-        No Ride Selected
-    </h3>
+            <p id="ride-message">
+                Enter your trip details and compare rides to see the best option.
+            </p>
 
-    <p id="ride-message">
-        Enter your trip details and compare rides to see the best option.
-    </p>
+            <div class="result-meta">
+                <div>
+                    <small>Estimated Saving</small>
+                    <strong id="saving-value">₹0</strong>
+                </div>
 
-    <div class="result-meta">
+                <div>
+                    <small>ETA</small>
+                    <strong id="eta-value">--</strong>
+                </div>
+            </div>
 
-        <div>
-            <small>Estimated Saving</small>
-            <strong id="saving-value">₹0</strong>
-        </div>
-
-        <div>
-            <small>ETA</small>
-            <strong id="eta-value">--</strong>
-        </div>
-
-     </div>
-
-         <p id="trip-status">
-        Ready to compare rides.
-        </p>
-
+            <p id="trip-status">Ready to compare rides.</p>
         </aside>
+
     </div>
 </section>
 
-    <section id="ride-results">
+<section id="ride-results">
+    <h2>Available Rides</h2>
 
-        <h2>Available Rides</h2>
+    <div class="ride-container">
 
-        <div class="ride-container">
+        <article class="ride-card" data-service="Uber">
+            <div class="ride-card-inner">
 
-            <article class="ride-card">
-                <h3>Uber</h3>
+                <div class="ride-card-front">
+                    <h3>Uber</h3>
+
                     <p>
-                      <span>Fare</span>
+                        <span>Fare</span>
                         <span id="uber-fare">--</span>
                     </p>
-                <p>
-                    <span>ETA</span>
-                    <span id="uber-time">--</span>
-                </p>
 
-                <p>
-                    <span>Rating</span>
-                    <span id="uber-rating">--</span>
-                </p>
-                <button>Select ride</button>
-            </article>
+                    <p>
+                        <span>ETA</span>
+                        <span id="uber-time">--</span>
+                    </p>
 
-            <article class="ride-card">
-                <h3>Ola</h3>
-                <p>
-                      <span>Fare</span>
+                    <p>
+                        <span>Rating</span>
+                        <span id="uber-rating">--</span>
+                    </p>
+
+                    <small>Hover to view details</small>
+                </div>
+
+                <div class="ride-card-back">
+                    <span class="ride-badge">Popular Choice</span>
+                    <h3>Uber</h3>
+
+                    <p>
+                        <span>Available Rides</span>
+                        <span>Bike • Auto • Sedan • SUV</span>
+                    </p>
+
+                    <p>
+                        <span>Rating</span>
+                        <span>⭐ 4.8</span>
+                    </p>
+
+                    <button type="button" class="select-ride">Select Ride</button>
+                </div>
+
+            </div>
+        </article>
+
+        <article class="ride-card" data-service="Ola">
+            <div class="ride-card-inner">
+
+                <div class="ride-card-front">
+                    <h3>Ola</h3>
+
+                    <p>
+                        <span>Fare</span>
                         <span id="ola-fare">--</span>
                     </p>
-                <p>
-                    <span>ETA</span>
-                    <span id="ola-time">--</span>
-                </p>
 
-                <p>
-                    <span>Rating</span>
-                    <span id="ola-rating">--</span>
-                </p>
-                <button>Select Ride</button>
-            </article>
+                    <p>
+                        <span>ETA</span>
+                        <span id="ola-time">--</span>
+                    </p>
 
-            <article class="ride-card">
-                <h3>Rapido</h3>
-                <p>
-                      <span>Fare</span>
+                    <p>
+                        <span>Rating</span>
+                        <span id="ola-rating">--</span>
+                    </p>
+
+                    <small>Hover to view details</small>
+                </div>
+
+                <div class="ride-card-back">
+                    <span class="ride-badge">Best Value</span>
+                    <h3>Ola</h3>
+
+                    <p>
+                        <span>Available Rides</span>
+                        <span>Auto • Sedan • SUV</span>
+                    </p>
+
+                    <p>
+                        <span>Rating</span>
+                        <span>⭐ 4.7</span>
+                    </p>
+
+                    <button type="button" class="select-ride">Select Ride</button>
+                </div>
+
+            </div>
+        </article>
+
+        <article class="ride-card" data-service="Rapido">
+            <div class="ride-card-inner">
+
+                <div class="ride-card-front">
+                    <h3>Rapido</h3>
+
+                    <p>
+                        <span>Fare</span>
                         <span id="rapido-fare">--</span>
                     </p>
-                <p>
-                    <span>ETA</span>
-                    <span id="rapido-time">--</span>
-                </p>
 
-                <p>
-                    <span>Rating</span>
-                    <span id="rapido-rating">--</span>
-                </p>
-                <button>Select ride</button>
-            </article>
+                    <p>
+                        <span>ETA</span>
+                        <span id="rapido-time">--</span>
+                    </p>
 
+                    <p>
+                        <span>Rating</span>
+                        <span id="rapido-rating">--</span>
+                    </p>
+
+                    <small>Hover to view details</small>
+                </div>
+
+                <div class="ride-card-back">
+                    <span class="ride-badge">Bike Friendly</span>
+                    <h3>Rapido</h3>
+
+                    <p>
+                        <span>Available Rides</span>
+                        <span>Bike • Auto</span>
+                    </p>
+
+                    <p>
+                        <span>Rating</span>
+                        <span>⭐ 4.6</span>
+                    </p>
+
+                    <button type="button" class="select-ride">Select Ride</button>
+                </div>
+
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section id="ride-insights">
+    <h2>Ride Insights</h2>
+
+    <div class="insight-container">
+
+        <div class="insight-card">
+            <h3>💰 Savings</h3>
+            <p id="saved-money">₹0</p>
         </div>
 
-    </section>
-
-    <section id="ride-insights">
-
-        <h2>Ride Insights</h2>
-
-        <div class="insight-container">
-
-            <div class="insight-card">
-                <h3>💰 Savings</h3>
-                <p id="saved-money">₹0</p>
-            </div>
-
-            <div class="insight-card">
-                <h3>🌱 Eco Score</h3>
-                <p id="eco-score">--</p>
-            </div>
-
-            <div class="insight-card">
-                <h3>⏰ Best Time</h3>
-                <p id="best-time">--</p>
-            </div>
-
+        <div class="insight-card">
+            <h3>🌱 Eco Score</h3>
+            <p id="eco-score">--</p>
         </div>
 
-    </section>
-
-    <section id="ride-history">
-
-        <h2>Recent Searches</h2>
-            <button id="clear-history">
-            Clear History
-            </button>
-                <div class="history-container">
-                <ul id="search-list">
-                <li>No recent searches.</li>
-                </ul>
+        <div class="insight-card">
+            <h3>⏰ Best Time</h3>
+            <p id="best-time">--</p>
         </div>
 
-    </section>
+    </div>
+</section>
+
+<section id="ride-history">
+    <h2>Recent Searches</h2>
+
+    <button id="clear-history" type="button">Clear History</button>
+
+    <div class="history-container">
+        <ul id="search-list">
+            <li>No recent searches.</li>
+        </ul>
+    </div>
+</section>
 
 </main>
 
@@ -238,7 +289,6 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
         <div class="footer-brand">
             <h3>FareCompare Pro</h3>
-
             <p>
                 Compare cab fares across multiple ride services,
                 find the best option and travel smarter every day.
@@ -258,7 +308,6 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
         <div class="footer-contact">
             <h4>Contact Us</h4>
-
             <p>Phone: +91 85952 54105</p>
             <p>Email: anuj.sharma4105@gmail.com</p>
             <p>Ghaziabad, Uttar Pradesh</p>
@@ -266,7 +315,7 @@ family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
         <div class="footer-project">
             <h4>Project Details</h4>
-            <p><p>Frontend project built using HTML, CSS and JavaScript.</p></p>
+            <p>Frontend project built using HTML, CSS and JavaScript.</p>
         </div>
 
     </div>
