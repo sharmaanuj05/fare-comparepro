@@ -1,37 +1,37 @@
 function ridePrice(km, ride) {
-    return ride.fare + km * ride.perKm;
+    return Math.round(ride.fare + km * ride.perKm);
 }
 
-function chooseRide(km) {
-    let selectedCab;
+function getAvailableRides(km, rideType) {
+    const available = [];
 
-    for (let i = 0; i < cabServices.length; i++) {
-        let amount = ridePrice(km, cabServices[i]);
+    for (let ride of cabServices) {
+        if (ride.rides.includes(rideType)) {
+            available.push({
+                service: ride.name,
+                amount: ridePrice(km, ride),
+                eta: ride.eta,
+                stars: ride.stars
+            });
+        }
+    }
 
-        if (!selectedCab || amount < selectedCab.amount) {
-            selectedCab = {
-                service: cabServices[i].name,
-                amount: amount,
-                eta: cabServices[i].eta,
-                stars: cabServices[i].stars
-            };
+    return available;
+}
+
+function chooseRide(km, rideType) {
+    const available = getAvailableRides(km, rideType);
+    let selectedCab = null;
+
+    for (let ride of available) {
+        if (!selectedCab || ride.amount < selectedCab.amount) {
+            selectedCab = ride;
         }
     }
 
     return selectedCab;
 }
 
-function compareRide(km) {
-    let details = [];
-
-    for (let i = 0; i < cabServices.length; i++) {
-        details.push({
-            service: cabServices[i].name,
-            amount: ridePrice(km, cabServices[i]),
-            eta: cabServices[i].eta,
-            stars: cabServices[i].stars
-        });
-    }
-
-    return details;
+function compareRide(km, rideType) {
+    return getAvailableRides(km, rideType);
 }

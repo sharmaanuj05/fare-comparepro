@@ -1,6 +1,8 @@
 const compareBtn = document.getElementById("compare-btn");
 const rideType = document.getElementById("vehicle-type");
 const seatText = document.getElementById("max-passengers");
+const distanceInput = document.getElementById("distance");
+const departureInput = document.getElementById("departure-time");
 
 const seatCount = {
     Bike: 1,
@@ -14,87 +16,144 @@ rideType.onchange = function () {
     seatText.textContent = "👥 Max Passengers : " + seatCount[this.value];
 };
 
-compareBtn.onclick = function () {
-    let pickup = document.getElementById("pickup").value.trim();
-    let drop = document.getElementById("drop").value.trim();
+function updateRideCards(rides) {
+    const cards = document.querySelectorAll(".ride-card");
 
-    if (pickup === "" || drop === "") {
-        alert("Please enter both pickup and destination.");
-        return;
-    }
+    for (let card of cards) {
+        const service = card.dataset.service;
+        const ride = rides.find(function (item) {
+            return item.service === service;
+        });
 
-    compareBtn.textContent = "Comparing...";
-    compareBtn.disabled = true;
+        card.style.display = ride ? "" : "none";
 
-    let km = 10;
-    let allCab = compareRide(km);
-    let bestCab = chooseRide(km);
+        if (ride) {
+            document.getElementById(service.toLowerCase() + "-fare").textContent =
+                "₹" + ride.amount;
 
-    for (let i = 0; i < allCab.length; i++) {
-        let company = allCab[i].service.toLowerCase();
+            document.getElementById(service.toLowerCase() + "-time").textContent =
+                ride.eta + " min";
 
-        document.getElementById(company + "-fare").textContent =
-            "₹" + allCab[i].amount;
-
-        document.getElementById(company + "-time").textContent =
-            allCab[i].eta + " min";
-
-        document.getElementById(company + "-rating").textContent =
-            allCab[i].stars;
-    }
-
-    document.getElementById("ride-title").textContent = bestCab.service;
-
-    document.getElementById("ride-message").textContent =
-        "Estimated Fare • ₹" + bestCab.amount;
-
-    let highestFare = allCab[0].amount;
-
-    for (let i = 1; i < allCab.length; i++) {
-        if (allCab[i].amount > highestFare) {
-            highestFare = allCab[i].amount;
+            document.getElementById(service.toLowerCase() + "-rating").textContent =
+                ride.stars;
         }
     }
+}
 
-    let saving = highestFare - bestCab.amount;
+function getAdjustedEta(eta, time) {
+    const hour = parseInt(time.split(":")[0]);
 
-    document.getElementById("saving-value").textContent =
-        "₹" + saving;
+    if (hour >= 8 && hour <= 10) {
+        return eta + 2;
+    }
 
-    document.getElementById("eta-value").textContent =
-        bestCab.eta + " min";
+    if (hour >= 17 && hour <= 20) {
+        return eta + 3;
+    }
 
-    document.getElementById("saved-money").textContent =
-        "₹" + saving;
+    return eta;
+}
 
-    document.getElementById("trip-status").textContent =
-        bestCab.eta <= 6
-            ? "Quick pickup available"
-            : "Better fare available";
-
-    document.getElementById("eco-score").textContent = "A";
-
-    document.getElementById("best-time").textContent =
-        bestCab.eta + " min";
-
-    let resultValues = document.querySelectorAll(
+function animateValues() {
+    const values = document.querySelectorAll(
         "#saving-value, #eta-value, #saved-money, #eco-score, #best-time"
     );
 
-    for (let value of resultValues) {
+    for (let value of values) {
         value.classList.remove("updated");
 
         setTimeout(function () {
             value.classList.add("updated");
         }, 50);
     }
+}
 
-    addTrip(bestCab.service + " • ₹" + bestCab.amount);
+compareBtn.onclick = function () {
+    const pickup = document.getElementById("pickup").value.trim();
+    const drop = document.getElementById("drop").value.trim();
+    const departureTime = departureInput.value;
+    const distance = Number(distanceInput.value);
+    const selectedType = rideType.value;
 
-    document.querySelector(".result-panel").classList.remove("show");
+    if (!pickup || !drop) {
+        alert("Please enter both pickup and destination.");
+        return;
+    }
+
+    if (!departureTime) {
+        alert("Please select a departure time.");
+        return;
+    }
+
+    if (!distance || distance <= 0) {
+        alert("Please enter a valid distance.");
+        return;
+    }
+
+    compareBtn.textContent = "Comparing...";
+    compareBtn.disabled = true;
+
+    const allRides = compareRide(distance, selectedType);
+    const bestRide = chooseRide(distance, selectedType);
+
+    if (!bestRide) {
+        alert("No ride service is available for the selected ride type.");
+        compareBtn.textContent = "Find Best Ride";
+        compareBtn.disabled = false;
+        return;
+    }
+
+    updateRideCards(allRides);
+
+    rideCards.forEach(function (card) {
+        card.classList.remove("selected", "flipped");
+    });
+
+    const adjustedEta = getAdjustedEta(bestRide.eta, departureTime);
+
+    let highestFare = 0;
+
+    for (let ride of allRides) {
+        if (ride.amount > highestFare) {
+            highestFare = ride.amount;
+        }
+    }
+
+    const saving = highestFare - bestRide.amount;
+
+    document.getElementById("ride-title").textContent = bestRide.service;
+    document.getElementById("ride-message").textContent =
+        "Estimated Fare • ₹" + bestRide.amount;
+    document.getElementById("saving-value").textContent = "₹" + saving;
+    document.getElementById("eta-value").textContent = adjustedEta + " min";
+    document.getElementById("saved-money").textContent = "₹" + saving;
+
+    document.getElementById("trip-status").textContent =
+        adjustedEta <= 6
+            ? "Quick pickup available"
+            : "Better fare available";
+
+    document.getElementById("eco-score").textContent = "A";
+    document.getElementById("best-time").textContent = adjustedEta + " min";
+
+    animateValues();
+
+    addTrip(
+        bestRide.service +
+        " • " +
+        selectedType +
+        " • " +
+        distance +
+        " km • ₹" +
+        bestRide.amount
+    );
+
+    const resultPanel = document.querySelector(".result-panel");
+
+    resultPanel.classList.remove("show");
 
     setTimeout(function () {
-        document.querySelector(".result-panel").classList.add("show");
+        resultPanel.classList.add("show");
     }, 50);
 
     compareBtn.textContent = "Find Best Ride";
@@ -105,7 +164,7 @@ let recentTrips =
     JSON.parse(localStorage.getItem("recentTrips")) || [];
 
 function updateTrips() {
-    let tripBox = document.getElementById("search-list");
+    const tripBox = document.getElementById("search-list");
 
     tripBox.innerHTML = "";
 
@@ -115,8 +174,8 @@ function updateTrips() {
     }
 
     for (let trip of recentTrips) {
-        let row = document.createElement("li");
-        row.innerText = trip;
+        const row = document.createElement("li");
+        row.textContent = trip;
         tripBox.appendChild(row);
     }
 }
@@ -128,29 +187,26 @@ function addTrip(value) {
         recentTrips.length = 5;
     }
 
-    localStorage.setItem(
-        "recentTrips",
-        JSON.stringify(recentTrips)
-    );
-
+    localStorage.setItem("recentTrips", JSON.stringify(recentTrips));
     updateTrips();
 }
 
 updateTrips();
 
-const clearBtn = document.getElementById("clear-history");
-
-clearBtn.onclick = function () {
+document.getElementById("clear-history").onclick = function () {
     recentTrips = [];
-
     localStorage.removeItem("recentTrips");
-
     updateTrips();
 };
 
 const modeBtn = document.getElementById("theme-toggle");
 
 let savedMode = localStorage.getItem("pageMode");
+
+if (!savedMode) {
+    savedMode = "night";
+    localStorage.setItem("pageMode", "night");
+}
 
 if (savedMode === "night") {
     document.body.classList.add("night");
@@ -160,58 +216,64 @@ if (savedMode === "night") {
 modeBtn.onclick = function () {
     document.body.classList.toggle("night");
 
-    let darkOn =
-        document.body.classList.contains("night");
+    const darkOn = document.body.classList.contains("night");
 
-    if (darkOn) {
-        localStorage.setItem("pageMode", "night");
-        modeBtn.textContent = "☀️";
-    } else {
-        localStorage.setItem("pageMode", "day");
-        modeBtn.textContent = "🌙";
-    }
+    localStorage.setItem("pageMode", darkOn ? "night" : "day");
+    modeBtn.textContent = darkOn ? "☀️" : "🌙";
 };
 
 document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
+    if (
+        event.key === "Enter" &&
+        document.activeElement.tagName !== "BUTTON"
+    ) {
         compareBtn.click();
     }
 });
 
-const rideCards =
-    document.querySelectorAll(".ride-card");
+const rideCards = document.querySelectorAll(".ride-card");
 
 for (let card of rideCards) {
-    let selectButton =
-        card.querySelector(".select-ride");
+    const selectButton = card.querySelector(".select-ride");
+
+    card.addEventListener("click", function (event) {
+        if (
+            window.matchMedia("(hover: none)").matches &&
+            !event.target.closest(".select-ride")
+        ) {
+            card.classList.toggle("flipped");
+        }
+    });
 
     selectButton.onclick = function (event) {
         event.stopPropagation();
 
-        for (let item of rideCards) {
+        rideCards.forEach(function (item) {
             item.classList.remove("selected");
-        }
+        });
 
         card.classList.add("selected");
 
-        let service = card.dataset.service;
+        const service = card.dataset.service;
 
-        document.getElementById("ride-title").textContent =
-            service;
-
-        let selectedRide = cabServices.find(function (ride) {
+        const selectedRide = cabServices.find(function (ride) {
             return ride.name === service;
         });
 
-        if (selectedRide) {
-            let amount = ridePrice(10, selectedRide);
+        const distance = Number(distanceInput.value) || 10;
+        const amount = ridePrice(distance, selectedRide);
+        const departureTime = departureInput.value;
 
-            document.getElementById("ride-message").textContent =
-                "Selected Fare • ₹" + amount;
+        const eta = departureTime
+            ? getAdjustedEta(selectedRide.eta, departureTime)
+            : selectedRide.eta;
 
-            document.getElementById("eta-value").textContent =
-                selectedRide.eta + " min";
-        }
+        document.getElementById("ride-title").textContent = service;
+        document.getElementById("ride-message").textContent =
+            "Selected Fare • ₹" + amount;
+        document.getElementById("eta-value").textContent = eta + " min";
+        document.getElementById("trip-status").textContent =
+            "Ride selected successfully.";
     };
 }
 

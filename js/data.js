@@ -5,7 +5,7 @@ const cabServices = [
         perKm: 14,
         eta: 5,
         stars: 4.8,
-        rides: ["Bike", "Auto", "Sedan", "SUV"]
+        rides: ["Bike", "Auto", "Sedan", "Compact SUV", "SUV"]
     },
     {
         name: "Ola",
@@ -13,7 +13,7 @@ const cabServices = [
         perKm: 15,
         eta: 6,
         stars: 4.7,
-        rides: ["Auto", "Sedan", "SUV"]
+        rides: ["Auto", "Sedan", "Compact SUV", "SUV"]
     },
     {
         name: "Rapido",
